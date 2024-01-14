@@ -1,0 +1,97 @@
+"---------------------------------------------------------------------------
+" フォント設定:
+"
+set guifont=ＭＳ_ゴシック:h9:cSHIFTJIS
+"---------------------------------------------------------------------------
+" ウインドウに関する設定:
+"
+" ウインドウの幅
+set columns=100
+" ウインドウの高さ
+set lines=36
+" コマンドラインの高さ(GUI使用時)
+set cmdheight=1
+" 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
+"colorscheme evening " (GUI使用時)
+"colorscheme pablo " (GUI使用時)
+colorscheme default "(GUI使用時)
+set background=light
+highlight CursorIM guibg=Purple guifg=NONE
+map ctags "!ctags -R -f ./tags"
+
+"taglistウィンドウに関する設定
+
+  let Tlist_Ctags_Cmd = 'c:\Tool\vim71-kaoriya-w32j\ec57j1w32bin\ctags.exe'
+  "let Tlist_Sort_Type = "name"
+  let Tlist_Use_Horiz_Window = 0
+  let Tlist_Use_Right_Window = 0
+  "let Tlist_Auto_Open = 1
+  "let Tlist_Display_Prototype = 1
+  "let Tlist_Display_Tag_Scope = 0
+  let Tlist_WinWidth = 40
+  "let Tlist_Inc_Winwidth = 0
+  let Tlist_Use_SingleClick = 1
+  "let Tlist_Compact_Format = 1
+  let Tlist_Exit_OnlyWindow = 1
+  "let Tlist_File_Fold_Auto_Close = 1
+  let Tlist_Auto_Highlight_Tag = 0
+  "let Tlist_Process_File_Always = 1
+  
+"---------------------------------------------------------------------------
+"TABに関する設定
+
+function GuiTabLabel()
+  let label = ''
+  let bufnrlist = tabpagebuflist(v:lnum)
+
+  " このタブページに変更のあるバッファがるときには '+' を追加する
+  for bufnr in bufnrlist
+	if getbufvar(bufnr, "&modified")
+	  let label = '[+]'
+	  break
+	endif
+  endfor
+
+  " ウィンドウが複数あるときにはその数を追加する
+"  let wincount = tabpagewinnr(v:lnum, '$')
+"  if wincount > 1
+"	let label .= wincount
+"  endif
+"  if label != ''
+"	let label .= ' '
+"  endif
+
+  " バッファ名を追加する
+  return label . bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
+endfunction
+
+"%N はカレントタブページ番号
+"set guitablabel=%N\ %{GuiTabLabel()}
+set guitablabel=%N%m\ %f
+"
+"
+"---------------------------------------------------------------------------
+" 日本語入力に関する設定:
+"
+"---------------------------------------------------------------------------
+" マウスに関する設定:
+"
+" ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
+set guioptions+=a
+
+"無名レジスタに入るデータを、*レジスタにも入れる。
+set clipboard+=unnamed
+
+"---------------------------------------------------------------------------
+" 印刷に関する設定:
+"
+set printfont=ＭＳ_ゴシック:h9:cSHIFTJIS
+
+"---------------------------------------------------------------------------
+" Chalice起動設定
+"
+set runtimepath+=$VIM/vimfiles/chalice
+runtime plugin/chalice.vim
+
+"キャッシュ用ディレクトリを指定する
+let chalice_cachedir = 'c:\var\chalice_cache'

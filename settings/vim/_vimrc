@@ -1,0 +1,140 @@
+
+filetype plugin on
+"---------------------------------------------------------------------------
+" 編集に関する設定:
+"
+" タブの画面上での幅
+set tabstop=4
+" タブをスペースに展開しない (expandtab:展開する)
+set noexpandtab
+" 自動的にインデントする (noautoindent:インデントしない)
+set autoindent
+" バックスペースでインデントや改行を削除できるようにする
+"set backspace=2
+set backspace=indent
+" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
+set nowrapscan
+" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+set showmatch
+" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
+set wildmenu
+" テキスト挿入中の自動折り返しを日本語に対応させる
+set formatoptions+=mM
+" 日本語整形スクリプト(by. 西岡拓洋さん)用の設定
+let format_join_spaces = 2	" 行連結時のスペースの付け方
+let format_allow_over_tw = 1	" ぶら下り可能幅
+
+"エラーベルに関する設定。ベル音をなくし、visualBellに設定する。
+set noeb
+set vb
+
+"---------------------------------------------------------------------------
+" GUI固有ではない画面表示の設定:
+"
+" 行番号を非表示 (number:表示)
+set nonumber
+" ルーラーを表示 (noruler:非表示)
+set ruler
+" タブや改行を表示 (list:表示)
+set nolist
+" どの文字でタブや改行を表示するかを設定
+set listchars=tab:>-,extends:<,eol:$
+" 長い行を折り返して表示 (nowrap:折り返さない)
+set wrap
+" 常にステータス行を表示 (詳細は:he laststatus)
+set laststatus=2
+" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
+set cmdheight=2
+" コマンドをステータス行に表示
+set showcmd
+" タイトルを表示
+set title
+" 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
+"colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
+
+"---------------------------------------------------------------------------
+"ファイルエクスプローラの設定
+"水平分割や垂直分割を設定するには次のようにします:
+  let g:explVertical=1    " 垂直分割
+"  let g:explVertical=0    " 水平分割
+
+"水平分割時にファイルを開くウィンドウを設定するには次のようにして下さい:
+"  let g:explSplitBelow=1    " エキスプローラの上のウィンドウに表示
+"  let g:explSplitBelow=0    " エキスプローラの下のウィンドウに表示
+"これらの値ははプラグインが読み込まれた時点で設定されます
+
+"垂直分割時にファイルを開くウィンドウを指定するには次のようにしてて下さい:
+  let g:explSplitRight=1    " エキスプローラの右のウィンドウに表示
+"  let g:explSplitRight=0    " エキスプローラの左のウィンドウに表示
+"これらの値ははプラグインが読み込まれた時点で設定されます
+
+"エクスプローラウィンドウの詳細な設定は次のようにします
+"  let g:explStartRight=1    " カレントウィンドウの右側に新しいウィンドウを開い
+			    " て表示します
+  let g:explStartRight=0    " カレントウィンドウの左側に新しいウィンドウを開い
+			    " て表示します
+  let g:explWinSize=40
+"map Sex Sexplore
+
+"---------------------------------------------------------------------------
+"version 7からのnetrwの設定
+"
+"プレビューウィンドウの分割 「直前のウィンドウ」(netrw-P)にも作用する。
+"let g:netrw_preview=0    "プレビューウィンドウを水平分割で表示する。
+let g:netrw_preview=1    "プレビューウィンドウを垂直分割で表示する。
+
+"ブラウザで<cr>を押してファイルを開く時
+"let g:netrw_browse_split=0    "同じウィンドウを使う
+"let g:netrw_browse_split=1    "ウィンドウを水平分割する
+"let g:netrw_browse_split=2    "ウィンドウを垂直分割する
+"let g:netrw_browse_split=3    "新しいタブで開く
+let g:netrw_browse_split=4    "P で開く（以前のウィンドウで開く)
+"
+"ブラウジングキャッシュ制御
+""低速ディレクトリブラウジング。ファイル一覧を再利用しない。
+"let g:netrw_fastbrowse=0
+""リモートディレクトリのみファイル一覧を再利用（初期設定）
+let g:netrw_fastbrowse=1
+""未取得のディレクトリのみファイル一覧を取得する。
+"let g:netrw_fastbrowse=2
+
+
+"水平分割時にファイルを開くウィンドウを設定するには次のようにして下さい:
+"  let g:netrw_alto=0    " エキスプローラの上のウィンドウに表示
+  let g:netrw_alto=1    " エキスプローラの下のウィンドウに表示
+"
+"垂直分割時にファイルを開くウィンドウを指定するには次のようにしてて下さい:
+"let g:netrw_altv=0    " エキスプローラの左のウィンドウに表示
+let g:netrw_altv=1    " エキスプローラの右のウィンドウに表示
+
+let g:netrw_winsize=40
+"---------------------------------------------------------------------------
+" ファイル操作に関する設定:
+"
+" バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
+set nobackup
+set backupdir=c:\var\
+
+"スワップファイルの作成ディレクトリの設定
+set swapfile
+set directory=c:\var\
+
+"undoファイルの作成ディレクトリ設定
+set undofile
+set undodir=c:\var\
+
+"---------------------------------------------------------------------------
+" 操作に関する設定
+"
+"ビジュアル選択時の*押下で、選択されている文字を検索する。
+vmap * y/<C-r>"<CR>
+
+"ステータスラインの表示を変更する。
+set statusline=%<%f\ %h%m%r%(\[%{&ff}\]%)%([ft=%Y]%)%(\[fenc=%{&fenc}\]%)%=%-8.(%l,%c%V%)\ [%-11.(ASCII=%b%)]\ [%-10.(HEX=0x%B%)]\ [%-6.(%o\(%O\)\ byte%)]\ %-4.(%P%)
+"set statusline=%<%f\ %h%m%r%=%-8.(%l,%c%V%)\ [%-11.(ASCII=%b%)]\ [%-10.(HEX=0x%B%)]\ [%-6.(%o\(%O\)\ byte%)]\ %-4.(%P%)
+"
+"
+set nocp
+if version >= 600
+	filetype plugin indent on
+endif
