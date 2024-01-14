@@ -1,0 +1,26 @@
+[user]
+	name = Hiroki Taniguchi
+	email = tani.hiroki@gmail.com
+[pull]
+	ff = only
+	rebase = false
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+	ignorecase = true
+	quotepath = false
+	pager = less
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = true
+[alias]
+	st = status
+	ch = checkout
+	graph = log --pretty=format:'%Cgreen[%cd] %Cblue%h %Cred<%cn> %Creset%s' --date=short  --decorate --graph --branches --tags --remotes
+	co = commit
+	br = branch
+	plog = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
+	c-all = config -l --show-origin --show-scope
+[help]
+	autocorrect = 30
